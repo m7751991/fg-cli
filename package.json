@@ -1,5 +1,5 @@
 {
-  "name": "fg-cli",
+  "name": "@wfg/cli",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",

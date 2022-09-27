@@ -1,5 +1,5 @@
 {
-  "name": "@fgcli/init",
+  "name": "@wfg/init",
   "version": "1.0.0",
   "description": "",
   "main": "./src/index.js",
