@@ -8,5 +8,9 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "npminstall": "^6.5.1",
+    "user-home": "^3.0.0"
+  }
 }

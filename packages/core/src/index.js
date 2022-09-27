@@ -2,7 +2,6 @@
 const fse = require("fs-extra");
 const { program } = require("commander");
 const log = require("npmlog");
-const inquirer = require("inquirer");
 const { init } = require("@fgcli/init");
 
 program.name("fgcli").version("1.0.0");
