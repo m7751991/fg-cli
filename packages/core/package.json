@@ -1,20 +1,17 @@
 {
-  "name": "fg-cli",
+  "name": "core",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
-  "engines": {
-    "node": ">=10",
-    "pnpm": ">=3"
-  },
   "dependencies": {
-    "@changesets/cli": "^2.24.4",
-    "inquirer": "8.0.0",
-    "npmlog": "^6.0.2"
+    "@fgcli/init": "workspace:^1.0.0",
+    "commander": "^9.4.0",
+    "fs-extra": "^10.1.0"
   }
 }
