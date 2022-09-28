@@ -19,8 +19,6 @@ class Package {
       `./node_modules/_${this.cacheFilePathPrefix}@${this.packageVersion}@${this.packageName}`
     );
   }
-
-  // /Users/admin/.fgcli/template/node_modules/_@m7751991_vuetemplate@1.0.1-beta@@m7751991
   // 检查目录是否存在，不存在则创建
   async prepare() {
     if (this.targetPath && !pathExists(this.targetPath)) {
