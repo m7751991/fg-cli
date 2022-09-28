@@ -2,7 +2,7 @@
 const fse = require("fs-extra");
 const { program } = require("commander");
 const log = require("npmlog");
-const { init } = require("@fgcli/init");
+const { init } = require("@m7751991/init");
 
 program.name("fgcli").version("1.0.0");
 program.command("init [name]").action(async (obj, options) => {

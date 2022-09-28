@@ -1,16 +1,18 @@
+const path = require("path");
 const fs = require("fs");
-const inquirer = require("inquirer");
+const ora = require("ora");
 const log = require("npmlog");
 const home = require("user-home");
+const inquirer = require("inquirer");
 const Package = require("./Package");
-const templateName = "@fg/vuetemplate";
-const templateVersion = "1.0.0";
+const { getLatestVersion } = require("@m7751991/utils");
+const CatchPath = "./.fgcli/template";
+const TemplateName = "@m7751991/vuetemplate";
+const UserCatchPath = path.resolve(home, CatchPath);
 
 const init = async (params) => {
-  console.log("我是init函数", params);
   const projectPath = process.cwd() + "/params";
   const ex = fs.existsSync(projectPath);
-  console.log(ex, "ex????");
   if (ex) {
     const result = await inquirer.prompt([
       {
@@ -23,15 +25,26 @@ const init = async (params) => {
       log.info("正在创建....");
     }
   } else {
-    const userHome = home + "/.fgcli/template";
-    const package = new Package({
-      targetPath: userHome,
-      name: templateName,
-      version: templateVersion,
-    });
-    const templatePath = package.dirIsEmpty();
-    if (!templatePath) {
-      package.install();
+    try {
+      const spinner = ora("start...").start();
+      const TemplateVersion = await getLatestVersion(TemplateName);
+      const package = new Package({
+        targetPath: UserCatchPath,
+        name: TemplateName,
+        version: TemplateVersion,
+      });
+      //  没有安装过则install，安装过则更新
+      if (!(await package.exists())) {
+        const res = await package.install();
+        !!res ? spinner.fail("安装失败") : spinner.succeed("安装成功");
+      } else {
+        log.info("检查模板更新");
+        const message = await package.update();
+        log.info(message);
+        spinner.stop();
+      }
+    } catch (error) {
+      log.error(error);
     }
   }
 };

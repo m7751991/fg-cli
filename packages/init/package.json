@@ -1,5 +1,5 @@
 {
-  "name": "@wfg/init",
+  "name": "@m7751991/init",
   "version": "1.0.0",
   "description": "",
   "main": "./src/index.js",
@@ -10,7 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@m7751991/utils": "link:../utils",
     "npminstall": "^6.5.1",
+    "ora": "5.4.1",
+    "path-exists": "4.0.0",
     "user-home": "^3.0.0"
   }
 }
