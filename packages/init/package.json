@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@m7751991/utils": "link:../utils",
+    "@m7751991/utils": "workspace:^1.0.0",
     "npminstall": "^6.5.1",
     "ora": "5.4.1",
     "path-exists": "4.0.0",
