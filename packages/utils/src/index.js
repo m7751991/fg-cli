@@ -1,6 +1,7 @@
 const semver = require("semver");
 const axios = require("axios");
 const urlJoin = require("url-join");
+const ejs = require("./ejs");
 
 function getNpmInfo(npmName) {
   if (!npmName) return null;
@@ -44,4 +45,5 @@ function getDefaultReqistry(isOriginal = true) {
 module.exports = {
   getVersions,
   getLatestVersion,
+  ejs,
 };
