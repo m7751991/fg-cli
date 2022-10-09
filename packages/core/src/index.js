@@ -22,29 +22,31 @@ program.command("init [name]").action(async (obj, options) => {
 });
 program.command("dev").action(async (obj, options) => {});
 program.command("build").action(async (obj, options) => {});
-program.command("merge").action(async (obj, options) => {
-  //获取当前分支名称
-  const branchName = spawn("git", [
-    "rev-parse",
-    "--abbrev-ref",
-    "HEAD",
-  ]).stdout.toString();
-  console.log(branchName);
-  // 切换到目标分支
-  const checkout = spawn("git", ["checkout", "-q", "master"]).stdout.toString();
-  // 查看状态
-  const status = spawn("git", ["status"]).stdout.toString();
-  // console.log(status, "??");
-  // 合并分支
-  const merge = spawn("git", ["merge", "develop"]).stdout.toString();
-  const mergeStatus = spawn("git", ["status"]).stdout.toString();
-  console.log(merge, "git merge");
-  console.log(mergeStatus, "merge");
-  // child.stdout.on("data", (data) => {
-  //   console.log(data.toString());
-  // });
-  // child.stderr.on("data", (data) => {
-  //   console.log(data.toString());
-  // });
-});
+program
+  .command("merge")
+  .option("-p --push", "合并之后自动推送到远端")
+  .option("-l --list <list...>", "合并分支名称", ["321"])
+  .description("自动合并分支")
+  .action(async (value, options) => {
+    //获取当前分支名称
+    const branchName = spawn("git", [
+      "rev-parse",
+      "--abbrev-ref",
+      "HEAD",
+    ]).stdout.toString();
+    console.log(branchName);
+    console.log(options.opts());
+    const opts = options.opts();
+    opts.list.forEach((b) => {
+      // // 切换到目标分支
+      const checkout = spawn("git", ["checkout", "-q", b]).stdout.toString();
+      log.info("checkout", checkout);
+      const status = spawn("git", ["status"]).stdout.toString();
+      console.log(status, "查看状态");
+      // // 合并分支
+      const merge = spawn("git", ["merge", branchName]).stdout.toString();
+      console.log(merge, "git merge");
+      // log.info("请手动推送到远端");
+    });
+  });
 program.parse(process.argv);
