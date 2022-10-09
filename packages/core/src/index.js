@@ -34,11 +34,11 @@ program.command("merge").action(async (obj, options) => {
   const checkout = spawn("git", ["checkout", "-q", "master"]).stdout.toString();
   // 查看状态
   const status = spawn("git", ["status"]).stdout.toString();
-  console.log(status, "??");
+  // console.log(status, "??");
   // 合并分支
   const merge = spawn("git", ["merge", branchName]).stdout.toString();
   const mergeStatus = spawn("git", ["status"]).stdout.toString();
-  console.log(merge, "merge");
+  console.log(merge, "git merge");
   console.log(mergeStatus, "merge");
   // child.stdout.on("data", (data) => {
   //   console.log(data.toString());
