@@ -23,19 +23,27 @@ program.command("init [name]").action(async (obj, options) => {
 program.command("dev").action(async (obj, options) => {});
 program.command("build").action(async (obj, options) => {});
 program.command("merge").action(async (obj, options) => {
+  //获取当前分支名称
   const branchName = spawn("git", [
     "rev-parse",
     "--abbrev-ref",
     "HEAD",
   ]).stdout.toString();
   console.log(branchName);
+  // 切换到目标分支
   const checkout = spawn("git", [
     "checkout",
     "-q",
     "develop",
   ]).stdout.toString();
+  // 查看状态
   const status = spawn("git", ["status"]).stdout.toString();
   console.log(status, "??");
+  // 合并分支
+  const merge = spawn("git", ["merge", branchName]).stdout.toString();
+  const mergeStatus = spawn("git", ["status"]).stdout.toString();
+  console.log(merge, "merge");
+  console.log(mergeStatus, "merge");
   // child.stdout.on("data", (data) => {
   //   console.log(data.toString());
   // });
