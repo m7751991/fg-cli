@@ -46,6 +46,6 @@ program.command("merge").action(async (obj, options) => {
   // child.stderr.on("data", (data) => {
   //   console.log(data.toString());
   // });
-  console.log("合并测试能不能啊？？？？？");
+  console.log("合并测试能不能啊？？0989080089089809？？？");
 });
 program.parse(process.argv);
