@@ -36,7 +36,7 @@ program.command("merge").action(async (obj, options) => {
   const status = spawn("git", ["status"]).stdout.toString();
   // console.log(status, "??");
   // 合并分支
-  const merge = spawn("git", ["merge", branchName]).stdout.toString();
+  const merge = spawn("git", ["merge", "develop"]).stdout.toString();
   const mergeStatus = spawn("git", ["status"]).stdout.toString();
   console.log(merge, "git merge");
   console.log(mergeStatus, "merge");
