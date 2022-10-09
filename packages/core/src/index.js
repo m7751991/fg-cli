@@ -31,11 +31,7 @@ program.command("merge").action(async (obj, options) => {
   ]).stdout.toString();
   console.log(branchName);
   // 切换到目标分支
-  const checkout = spawn("git", [
-    "checkout",
-    "-q",
-    "develop",
-  ]).stdout.toString();
+  const checkout = spawn("git", ["checkout", "-q", "master"]).stdout.toString();
   // 查看状态
   const status = spawn("git", ["status"]).stdout.toString();
   console.log(status, "??");
