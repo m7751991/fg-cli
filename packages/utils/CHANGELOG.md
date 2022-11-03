@@ -1,5 +1,11 @@
 # @m7751991/utils
 
+## 5.0.0
+
+### Major Changes
+
+- 1
+
 ## 4.0.0
 
 ### Major Changes
