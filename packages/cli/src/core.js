@@ -110,7 +110,7 @@ async function createProject(projectPath, packageName) {
     );
     log.notice("开始安装依赖");
     await npminstall(projectPath);
-    log.success("依赖安装成功");
+    log.info("依赖安装成功");
 
     log.info(`cd ${packageName}`);
     log.info("npm run serve");
