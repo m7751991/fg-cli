@@ -19,8 +19,9 @@ program.command("dev").action(async (obj, options) => {
 });
 program.command("build").action(async (obj, options) => {
   const modes = "prod";
-  const service = new Service(process.cwd(), { modes });
-  service.run();
+  log.warn("还没做....稍等片刻");
+  // const service = new Service(process.cwd(), { modes });
+  // service.run();
 });
 
 program.parse(process.argv);

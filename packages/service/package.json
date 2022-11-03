@@ -33,6 +33,8 @@
     "postcss-loader": "^7.0.1",
     "semver": "^7.3.7",
     "style-loader": "^3.3.1",
+    "sass-loader": "^13.1.0",
+    "sass": "^1.55.0",
     "terser-webpack-plugin": "^5.3.6",
     "user-home": "^3.0.0",
     "vue-loader": "15",

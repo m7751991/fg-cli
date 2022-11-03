@@ -15,12 +15,7 @@ class Service {
   async run() {
     const config = webpackDev;
     try {
-      console.log(config, "开发");
       const compiler = webpack(config);
-      //   compiler.run((error, stats) => {
-      //     // console.log(stats);
-      //     if (error) console.log(error);
-      //   });
       const server = config.devServer;
       const devServer = new WebpackDevServer(compiler, server);
       // 启动服务.
@@ -29,7 +24,7 @@ class Service {
           console.log(_e);
           return;
         }
-        console.log(chalk.cyan("开发服务器启动中...\n"));
+        console.log("开发服务器启动中...");
       });
 
       ["SIGINT", "SIGTERM"].forEach((sig) => {
