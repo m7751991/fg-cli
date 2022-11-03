@@ -26,9 +26,6 @@ module.exports = async function (
         if (err) {
           return reject(err);
         }
-
-        log.info("render files:", files);
-
         Promise.all(
           files.map((file) => {
             const filepath = path.join(dir, file);
@@ -50,7 +47,6 @@ function renderFile(filepath, options, diableFormatDotFile) {
   let filename = path.basename(filepath);
 
   if (filename.indexOf(".png") !== -1 || filename.indexOf(".jpg") !== -1) {
-    // console.log('renderFile:', filename);
     return Promise.resolve();
   }
 
@@ -59,7 +55,6 @@ function renderFile(filepath, options, diableFormatDotFile) {
       if (err) {
         return reject(err);
       }
-
       //   if (/^_package.json/.test(filename)) {
       //     filename = filename.replace("_package.json", "package.json");
       //     fse.removeSync(filepath);
