@@ -13,7 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@m7751991/init": "workspace:^3.0.0",
+    "@m7751991/init": "^3.0.0",
     "commander": "^9.4.0",
     "fs-extra": "^10.1.0",
     "npmlog": "^6.0.2",
