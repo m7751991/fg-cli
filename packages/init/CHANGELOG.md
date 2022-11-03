@@ -1,5 +1,16 @@
 # @m7751991/init
 
+## 4.0.0
+
+### Major Changes
+
+- f7ffb1d: 1
+
+### Patch Changes
+
+- Updated dependencies [f7ffb1d]
+  - @m7751991/utils@4.0.0
+
 ## 3.0.0
 
 ### Major Changes
