@@ -1,5 +1,16 @@
 # @m7751991/cli
 
+## 8.0.0
+
+### Major Changes
+
+- 1
+
+### Patch Changes
+
+- Updated dependencies
+  - @m7751991/utils@6.0.0
+
 ## 7.0.0
 
 ### Major Changes
