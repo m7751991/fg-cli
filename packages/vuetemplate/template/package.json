@@ -1,7 +1,9 @@
 {
-  "name": "template",
-  "version": "0.1.3",
+  "name": "<%= ejsData.packageName %>",
+  "version": "<%= ejsData.version%>",
   "private": true,
+  "description": "<%= ejsData.description%>",
+  "author": "<%= ejsData.author%>",
   "scripts": {
     "serve": "fgcli-service dev",
     "build": "fgcli-service build"

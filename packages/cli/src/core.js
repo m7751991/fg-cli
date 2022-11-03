@@ -7,7 +7,7 @@ const home = require("user-home");
 const inquirer = require("inquirer");
 const Package = require("./Package");
 const pathExists = require("path-exists").sync;
-const { getLatestVersion, ejs } = require("@m7751991/utils");
+const { getLatestVersion, ejs, exec } = require("@m7751991/utils");
 const pkg = require("../package.json");
 
 const CatchPath = "./.fgcli/template";
@@ -58,6 +58,14 @@ function checkUerHome() {
   }
 }
 
+/**
+ * @param projectPath
+ * @desc 项目创建后的根目录
+ *
+ * @param packageName
+ * @desc 项目名称
+ *
+ * */
 async function createProject(projectPath, packageName) {
   try {
     const spinner = new ora();
@@ -100,7 +108,12 @@ async function createProject(projectPath, packageName) {
         ignore: ejsIgnoreFiles,
       }
     );
-    //todo ejs 模板渲染
+    log.notice("开始安装依赖");
+    await npminstall(projectPath);
+    log.success("依赖安装成功");
+
+    log.info(`cd ${packageName}`);
+    log.info("npm run serve");
     spinner.stop();
   } catch (error) {
     log.error(error);
@@ -158,6 +171,33 @@ function copyTemplateToTargetPath(catchPath, targetPath) {
       }
       resolve();
       log.info("复制成功");
+    });
+  });
+}
+
+async function npminstall(targetPath) {
+  return new Promise((resolve, reject) => {
+    const p = exec("npm", ["install"], { stdio: "inherit", cwd: targetPath });
+    p.on("error", (e) => {
+      reject(e);
+    });
+    p.on("exit", (c) => {
+      resolve(c);
+    });
+  });
+}
+
+async function execStartCommand(targetPath) {
+  return new Promise((resolve, reject) => {
+    const p = exec("npm", ["run", "serve"], {
+      stdio: "inherit",
+      cwd: targetPath,
+    });
+    p.on("error", (e) => {
+      reject(e);
+    });
+    p.on("exit", (c) => {
+      resolve(c);
     });
   });
 }
