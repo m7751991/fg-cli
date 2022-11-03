@@ -9,7 +9,6 @@ const Package = require("./Package");
 const pathExists = require("path-exists").sync;
 const { getLatestVersion, ejs } = require("@m7751991/utils");
 const pkg = require("../package.json");
-const Service = require("./Service");
 
 const CatchPath = "./.fgcli/template";
 const TemplateName = "@m7751991/vuetemplate";
@@ -165,5 +164,4 @@ function copyTemplateToTargetPath(catchPath, targetPath) {
 
 module.exports = {
   core,
-  Service,
 };

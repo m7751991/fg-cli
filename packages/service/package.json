@@ -1,18 +1,23 @@
 {
-  "name": "@m7751991/init",
-  "version": "4.0.0",
+  "name": "@m7751991/service",
+  "version": "1.0.0",
   "description": "",
   "main": "./src/index.js",
+  "bin": {
+    "fgcli-service": "./src/index.js"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "fgcli-service"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@m7751991/utils": "^4.0.0",
+    "@m7751991/service": "^1.0.0",
     "@vue/compiler-sfc": "^3.2.41",
     "babel-loader": "^9.0.1",
+    "commander": "^9.4.0",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.1",
     "css-minimizer-webpack-plugin": "^4.2.2",
@@ -31,7 +36,7 @@
     "style-loader": "^3.3.1",
     "terser-webpack-plugin": "^5.3.6",
     "user-home": "^3.0.0",
-    "vue-loader": "17",
+    "vue-loader": "15",
     "webpack": "^5.74.0",
     "webpack-bundle-analyzer": "^4.7.0",
     "webpack-dev-server": "^4.11.1",

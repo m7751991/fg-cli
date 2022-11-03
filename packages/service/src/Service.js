@@ -1,7 +1,8 @@
+const webpack = require("webpack");
+const WebpackDevServer = require("webpack-dev-server");
+
 const webpackDev = require("../webpack/webpack.dev.conf");
 const webpackProd = require("../webpack/webpack.prod.conf");
-const WebpackDevServer = require("webpack-dev-server");
-const webpack = require("webpack");
 class Service {
   constructor(context, { modes }) {
     process.VUE_CLI_SERVICE = this;

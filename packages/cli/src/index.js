@@ -1,12 +1,13 @@
 #!/usr/bin/env node
-const fse = require("fs-extra");
-const { program } = require("commander");
 const log = require("npmlog");
-const { core, Service } = require("@m7751991/init");
-const pkg = require("../package.json");
-const spawn = require("child_process").spawnSync;
-const { defaultBranch } = require("./env");
+const fse = require("fs-extra");
 const inquirer = require("inquirer");
+const { program } = require("commander");
+const spawn = require("child_process").spawnSync;
+
+const { defaultBranch } = require("./env");
+const { core } = require("./core");
+const pkg = require("../package.json");
 
 function checkNodeVersion() {
   // process.version
@@ -24,13 +25,6 @@ program.command("init [name]").action(async (obj, options) => {
     log.error("当前目录不存在");
   }
 });
-program.command("dev").action(async (obj, options) => {
-  const modes = "development";
-  const service = new Service(process.cwd(), { modes });
-  service.run();
-});
-program.command("build").action(async (obj, options) => {});
-
 program
   .command("merge")
   .option("-p --push", "合并之后自动推送到远端")
