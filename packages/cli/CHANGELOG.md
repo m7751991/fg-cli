@@ -1,5 +1,11 @@
 # @m7751991/cli
 
+## 7.0.0
+
+### Major Changes
+
+- 1
+
 ## 2.0.0
 
 ### Major Changes
