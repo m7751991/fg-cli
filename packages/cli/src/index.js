@@ -4,8 +4,13 @@ const fse = require("fs-extra");
 const inquirer = require("inquirer");
 const { program } = require("commander");
 const spawn = require("child_process").spawnSync;
+const home = require("user-home");
 
-const { defaultBranch } = require("./env");
+const {
+  defaultBranch,
+  DEFAULT_CLI_HOME,
+  TEMPLATE_PATH,
+} = require("./constant");
 const { core } = require("./core");
 const pkg = require("../package.json");
 
@@ -14,7 +19,14 @@ function checkNodeVersion() {
   log.info("node version: " + process.version);
 }
 
+let config;
+function checkEnv() {
+  config["cliHome"] = path.join(home, DEFAULT_CLI_HOME);
+}
+
+checkEnv();
 checkNodeVersion();
+
 program.name("fgcli").version(pkg.version);
 program.command("init [name]").action(async (obj, options) => {
   const res = await fse.exists(process.cwd());
@@ -25,6 +37,21 @@ program.command("init [name]").action(async (obj, options) => {
     log.error("当前目录不存在");
   }
 });
+
+program
+  .command("clean")
+  .description("清空缓存文件")
+  .action((options) => {
+    log.info("开始清空缓存文件");
+    const depPath = path.resolve(config.cliHome, TEMPLATE_PATH);
+    if (fs.existsSync(depPath)) {
+      fse.emptyDirSync(depPath);
+      log.info("清空依赖文件成功", depPath);
+    } else {
+      log.info("文件夹不存在", depPath);
+    }
+  });
+
 program
   .command("merge")
   .option("-p --push", "合并之后自动推送到远端")
