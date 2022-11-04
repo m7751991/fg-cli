@@ -1,5 +1,7 @@
 # @m7751991/cli
 
+test
+
 ## 8.0.0
 
 ### Major Changes
