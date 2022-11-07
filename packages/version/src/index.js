@@ -4,16 +4,15 @@ const semver = require("semver");
 const fs = require("fs-extra");
 const path = require("path");
 const log = require("npmlog");
-
 const packages = path.resolve(__dirname, "../../../packages");
-let packageInfo = {};
 
+let packageInfo = {};
 async function Index() {
   packageInfo = await getProjectInformation();
-  await updateVersion(packageInfo);
+  await preUpdateVersion();
 }
 
-async function updateVersion() {
+async function preUpdateVersion() {
   const packagesList = Object.keys(packageInfo);
   const { result } = await inquirer.prompt([
     {
@@ -35,7 +34,7 @@ async function updateVersion() {
   setVersion(versionQuestion.version, true);
   const { yes } = await inquirer.prompt([
     {
-      message: "是否升级版本号",
+      message: "是否升级以上项目版本号",
       type: "confirm",
       name: "yes",
     },
@@ -56,6 +55,7 @@ function updateVersion(source) {
       } else {
         pkg.version = vs;
         fs.writeFileSync(package.path, JSON.stringify(pkg, null, 2) + "\n");
+        log.info("update:", name, pkg.version);
       }
     });
   };
